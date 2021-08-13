@@ -1,6 +1,4 @@
-
 <!doctype html>
-
 <html lang="en">
   <head>
     {% load staticfiles %}
@@ -9,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Eason</title>
+    <title>Eason Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
 
@@ -23,6 +21,7 @@
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
 <meta name="theme-color" content="#7952b3">
 
 
@@ -57,7 +56,7 @@
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="http://www.twitter.com">Twitter</a>
         <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
-        <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+        <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
         <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
       </div>
     </div>
@@ -67,40 +66,27 @@
 
 <main>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Hi! I am Eason</h1>
-        <p class="lead text-muted">This is my first django project.</p>
-        <p>
-          <a href="mailto: king0133@live.com" class="btn btn-primary my-2">E-mail Me</a>
-          <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
-        </p>
-        <img src="{% static 'image.JPG' %}" height="300" />
-      </div>
-    </div>
-  </section>
+  <h1 class="text-center pt-3"> Welcome to Eason's Blog!</h1>
+  <br />
+  <br />
+  <br />
+  <h2 calss="text-center"> Lastest</h2>
+  <hr />
 
-  <div class="album py-5 bg-light">
-    <div class="container">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  {% for blog in blogs.all%}
+  <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+  {{ blog.pub_date_pretty }}
+  <br />
+  <img class="img-fluid" src="{{ blog.image.url }}" height=200 width=200/>
+  <br />
+  <p>{{ blog.summary}}</p>
 
-        {% for job in jobs.all %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}" />
+  {% endfor %}
+</div>
 
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
 
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+
 
 </main>
 
@@ -109,12 +95,6 @@
     <p> ©CopyRight Eason {% now "Y" %}</p>
   </div>
 </footer>
-
-    <!-- 应该只需要写这一行 -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-    <!-- JavaScript Bundle with Popper --> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
 </html>
