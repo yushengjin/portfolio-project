@@ -1,6 +1,8 @@
 # portfolio-project
 http://178.128.148.147/
 
+![](https://i.imgur.com/n5hkH1s.gif)
+
 
 Personal Portfolio: Create the own portfolio to show to potential employers showing off resume, previous projects, and a fully functional blog. 
 
